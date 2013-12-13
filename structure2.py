@@ -10,7 +10,7 @@ if __name__ == '__main__':
     comm = MPI.COMM_WORLD
     rank = comm.Get_rank()
 
-    #sizes = [20, 100, 175]
+    sizes = [20, 100, 175] #choose how many item option you have to choose from in your knapsack
     #sizes = [250, 320, 400]
     sizes = [400]
     par_times_grand = []
@@ -36,8 +36,6 @@ if __name__ == '__main__':
             
             if rank == 0:
         
-                #par_grand
-                #print "Still going Grand"
                 par_start_time_grand = MPI.Wtime()
                 partotal_grand, parlist_grand = master_grand(comm)
                 par_end_time_grand = MPI.Wtime()
@@ -52,7 +50,6 @@ if __name__ == '__main__':
 ##################################### Run for par_set (base) #######################################################
 
             if rank == 0:
-                #print "Still going Base"                
                 par_start_time_base = MPI.Wtime()
                 partotal_base,parlist_base = master_base(comm)
                 par_end_time_base = MPI.Wtime()
@@ -67,7 +64,6 @@ if __name__ == '__main__':
 ##################################### Run for par_dff (dff) #######################################################
 
             if rank == 0:
-                #print "Still going Dff"                
                 par_start_time_dff = MPI.Wtime()
                 partotal_dff,parlist_dff = master_dff(comm)
                 par_end_time_dff = MPI.Wtime()
@@ -82,7 +78,6 @@ if __name__ == '__main__':
 ##################################### Run for par_depth (depth) #######################################################
 
             if rank == 0:
-                #print "Still going Depth"               
                 par_start_time_depth = MPI.Wtime()
                 partotal_depth,parlist_depth = master_depth(comm)
                 par_end_time_depth = MPI.Wtime()
@@ -100,7 +95,6 @@ if __name__ == '__main__':
 
 
             if rank == 0:
-                #print 'start ser'
                 ser_start_time = MPI.Wtime()
                 sertotal,serlist = serial_solve()
                 ser_end_time = MPI.Wtime()
@@ -109,7 +103,7 @@ if __name__ == '__main__':
 
 
        
-#################################################################################################
+#################################   Calculate final times   ####################################################
 
         if rank == 0:
            

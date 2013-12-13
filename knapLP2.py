@@ -5,12 +5,8 @@ from math import *
 import time
 
 
-#seed = np.random.randint(0,100000)
 seed=43445
 np.random.seed(seed)
-# VALUE = np.random.randint(1,15,250)
-# WEIGHT = np.random.randint(1,15,250)
-# CAPACITY = 1000 #10 
 
 
 class problem:
@@ -50,21 +46,14 @@ def LP(CONST):
 
     #add constraints according to branching
     
-    #print "Constraints:", CONST.items()
     for i,n in CONST.items():
-        #print "i",i,n
         prob += X[i] == n
 
-    #print prob
 
     status = prob.solve()
     statusmessage = LpStatus[status]
     #print statusmessage
 
-    '''
-    # use this to return object 
-    return prob.variables()
-    '''
 
     #use to return simple list of values:
     variables = []
@@ -73,31 +62,16 @@ def LP(CONST):
         v = value(X[i])
         if (v != 1.0 and v !=0.0):
             var = i
-    #for v in prob.variables():
-    #    if (v.varValue != 1.0 and v.varValue !=0.0):
-    #        print v.varValue
-    #        #print v
-    #        var = int(str(v)[2:]) 
-    #    print 'asd', v
        	variables.append(v)
 
     """     Returns:
             - list of variable values,
             - vaalue of objective function
             - decision variable with fractional value (doesn't deal with multiple fractional values yet)"""
-    #print type(var)
-    #print '~', variables, value(prob.objective), var, statusmessage
     return variables, value(prob.objective), var, statusmessage
 
  
 if __name__ == '__main__':
-    #input:
-    #VALUE = [7, 5, 3, 2, 2]
-    #WEIGHT = [7, 5, 3, 2, 2]
-    #CAPACITY = 10 
-    #CONST = {1:0,2:1}
-    #either 1 or 0 depending on branching
-    #BSTATUS = 0
 
     #run function
     pr.generate_problem(25)
@@ -110,10 +84,5 @@ if __name__ == '__main__':
 
 
 
-    '''
-    #use if you choose to use first return statement (with object)
-    for v in something:
-       	print v.varValue
-    '''
     
 

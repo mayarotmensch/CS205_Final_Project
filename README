@@ -1,0 +1,53 @@
+##################################################################
+#	****In The Garden of Branching Paths*****		#
+#								#
+#	Bounded optimization in a parallel world		#
+#								#
+#	by Matthew Warshauer, and Maya Rotmensch		#
+#		TF: Kevin Zhang					#
+##################################################################
+
+Overview
+-----------
+
+For our project we chose to parallelism the branch and bound algorithm for more efficiently solving integer program optimization problems.
+
+
+Set Up
+----------
+To run our program, the reader should create a virtual environment.
+We recommend that the reader create this virtual environment on an ubuntu machine (or at least not on a mac because some o the packaged do not play nice with mac operating system).
+
+virtualenv **env name** 
+
+source **env name**/bin/activate
+
+To run these programs the reader must download the following packages:
+pip install numpy
+pip install Pulp #the linear program software we need
+
+
+
+Application Files
+-------------------
+bandbserial.py		# our serial implementation for the problem, used for comparison
+
+knapLP2.py 		# the formulation of our knapsack Integer Problem
+
+## Various parallel implementations: ##
+par_set.py 	# base version, each slave calculates 
+par_depth.py	# depth first search parallel version
+par_dff.py	# def search parallel version
+par_grand.py	# grand children version 
+
+structure2.py   # a structure that that calls all functions above and runs them for a variety of problem sizes. this also measures the average run time per program per problem size.
+
+
+How to Run
+---------------
+Our master program is structure2.py
+to run our program simply open structure2.py, change the list "sizes" to contain the number of items you want the option of having to put in the knapsack.
+our KnapLP2.py program will automatically create an LP's of that size, seeded with a randomly chosen seed. 
+You may also adjust "nsolves". This is the number of times the program will run (for different configurations of items (chosen randomly with seeds)) before the averaging the times sampled to give an average run time.
+
+
