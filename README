@@ -15,16 +15,16 @@ For our project we chose to parallelism the branch and bound algorithm for more 
 
 Set Up
 ----------
-To run our program, the reader should create a virtual environment.
-We recommend that the reader create this virtual environment on an ubuntu machine (or at least not on a mac because some o the packaged do not play nice with mac operating system).
+To run our program, the reader should create a virtual environment. To run the parallel, we recommend that the reader create this virtual environment on the CS205 cluster. Furthermore, we reccomend using an ubuntu machine (or at least not on a Mac because some of the packages do not play nice with Mac operating system).
 
+To create a virtual environment:
 virtualenv **env name** 
 
 source **env name**/bin/activate
 
 To run these programs the reader must download the following packages:
 pip install numpy
-pip install Pulp #the linear program software we need
+pip install Pulp #the linear program software we need for KnapLP2
 
 
 
@@ -46,8 +46,8 @@ structure2.py   # a structure that that calls all functions above and runs them 
 How to Run
 ---------------
 Our master program is structure2.py
-to run our program simply open structure2.py, change the list "sizes" to contain the number of items you want the option of having to put in the knapsack.
-our KnapLP2.py program will automatically create an LP's of that size, seeded with a randomly chosen seed. 
-You may also adjust "nsolves". This is the number of times the program will run (for different configurations of items (chosen randomly with seeds)) before the averaging the times sampled to give an average run time.
+To run our program simply open structure2.py, change the list "sizes" to contain the max number of items you want the option of putting in the knapsack. (For example, you choose sizes= [20], you will have created a knapsack problem in which the computer will select from the 20 possible items (with randomly generated weights and values) to put in the knapsack).
+You may also want to adjust "nsolves". This is the number of times the program will run (for different configurations of items (chosen randomly with our seed)) before the averaging the times sampled to give an average run time.
+Note that when calling structure2.py you will be running all 4 parallel programs as well as the serial program. If you wish to only run one of the programs, simply comment out the sections not relating to that programs (code promenantly segmented through commenting).
 
 
